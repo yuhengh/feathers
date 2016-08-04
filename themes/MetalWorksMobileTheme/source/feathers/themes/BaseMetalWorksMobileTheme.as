@@ -68,7 +68,8 @@ package feathers.themes
 	import feathers.controls.text.TextBlockTextRenderer;
 	import feathers.core.FeathersControl;
 	import feathers.core.PopUpManager;
-	import feathers.display.Scale3Image;
+    import feathers.core.ToolTipManager;
+    import feathers.display.Scale3Image;
 	import feathers.display.Scale9Image;
 	import feathers.display.TiledImage;
 	import feathers.layout.HorizontalLayout;
@@ -706,6 +707,8 @@ package feathers.themes
 		 */
 		override public function dispose():void
 		{
+            ToolTipManager.setEnabledForStage(Starling.current.stage, false);
+
 			if(this.atlas)
 			{
 				//these are saved globally, so we want to clear them out
@@ -760,6 +763,8 @@ package feathers.themes
 
 			PopUpManager.overlayFactory = popUpOverlayFactory;
 			Callout.stagePadding = this.smallGutterSize;
+
+            ToolTipManager.setEnabledForStage(Starling.current.stage, true);
 		}
 
 		/**
@@ -1035,6 +1040,7 @@ package feathers.themes
 			this.getStyleProviderForClass(Label).defaultStyleFunction = this.setLabelStyles;
 			this.getStyleProviderForClass(Label).setFunctionForStyleName(Label.ALTERNATE_STYLE_NAME_HEADING, this.setHeadingLabelStyles);
 			this.getStyleProviderForClass(Label).setFunctionForStyleName(Label.ALTERNATE_STYLE_NAME_DETAIL, this.setDetailLabelStyles);
+            this.getStyleProviderForClass(Label).setFunctionForStyleName(Label.ALTERNATE_STYLE_NAME_TOOL_TIP, this.setToolTipLabelStyles);
 
 			//layout group
 			this.getStyleProviderForClass(LayoutGroup).setFunctionForStyleName(LayoutGroup.ALTERNATE_STYLE_NAME_TOOLBAR, setToolbarLayoutGroupStyles);
@@ -1779,6 +1785,14 @@ package feathers.themes
 			label.textRendererProperties.elementFormat = this.smallLightElementFormat;
 			label.textRendererProperties.disabledElementFormat = this.smallDisabledElementFormat;
 		}
+
+        protected function setToolTipLabelStyles(label:Label):void
+        {
+            var backgroundSkin:Scale9Image = new Scale9Image(this.backgroundSkinTextures, this.scale);
+            label.backgroundSkin = backgroundSkin;
+            label.textRendererProperties.elementFormat = this.lightElementFormat;
+            label.padding = this.smallGutterSize;
+        }
 
 	//-------------------------
 	// LayoutGroup

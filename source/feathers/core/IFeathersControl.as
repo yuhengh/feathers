@@ -191,5 +191,15 @@ package feathers.core
 		 * @copy feathers.core.FeathersControl#move()
 		 */
 		function move(x:Number, y:Number):void;
+
+        /**
+         * @copy feathers.core.FeathersControl#toolTip
+         */
+        function get toolTip():String;
+
+        /**
+         * @private
+         */
+        function set toolTip(value:String):void
 	}
 }

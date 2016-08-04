@@ -10,7 +10,8 @@ package feathers.controls
 	import feathers.core.FeathersControl;
 	import feathers.core.ITextBaselineControl;
 	import feathers.core.ITextRenderer;
-	import feathers.core.PropertyProxy;
+    import feathers.core.IToolTip;
+    import feathers.core.PropertyProxy;
 	import feathers.skins.IStyleProvider;
 
 	import flash.geom.Point;
@@ -23,7 +24,7 @@ package feathers.controls
 	 * @see ../../../help/label.html How to use the Feathers Label component
 	 * @see ../../../help/text-renderers.html Introduction to Feathers text renderers
 	 */
-	public class Label extends FeathersControl implements ITextBaselineControl
+	public class Label extends FeathersControl implements ITextBaselineControl, IToolTip
 	{
 		/**
 		 * @private
@@ -803,5 +804,7 @@ package feathers.controls
 		{
 			this.invalidate(INVALIDATION_FLAG_STYLES);
 		}
+
+        public static const ALTERNATE_STYLE_NAME_TOOL_TIP:String = "feathers-tool-tip";
 	}
 }
