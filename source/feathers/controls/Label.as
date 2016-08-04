@@ -630,20 +630,20 @@ package feathers.controls
 		 */
 		protected function autoSizeIfNeeded():Boolean
 		{
-			var needsWidth:Boolean = this.explicitWidth !== this.explicitWidth; //isNaN
-			var needsHeight:Boolean = this.explicitHeight !== this.explicitHeight; //isNaN
+			var needsWidth:Boolean = this._explicitWidth !== this._explicitWidth; //isNaN
+			var needsHeight:Boolean = this._explicitHeight !== this._explicitHeight; //isNaN
 			if(!needsWidth && !needsHeight)
 			{
 				return false;
 			}
 			this.textRenderer.minWidth = this._minWidth - this._paddingLeft - this._paddingRight;
 			this.textRenderer.maxWidth = this._maxWidth - this._paddingLeft - this._paddingRight;
-			this.textRenderer.width = this.explicitWidth - this._paddingLeft - this._paddingRight;
+			this.textRenderer.width = this._explicitWidth - this._paddingLeft - this._paddingRight;
 			this.textRenderer.minHeight = this._minHeight - this._paddingTop - this._paddingBottom;
 			this.textRenderer.maxHeight = this._maxHeight - this._paddingTop - this._paddingBottom;
-			this.textRenderer.height = this.explicitHeight - this._paddingTop - this._paddingBottom;
+			this.textRenderer.height = this._explicitHeight - this._paddingTop - this._paddingBottom;
 			this.textRenderer.measureText(HELPER_POINT);
-			var newWidth:Number = this.explicitWidth;
+			var newWidth:Number = this._explicitWidth;
 			if(needsWidth)
 			{
 				if(this._text)
@@ -662,7 +662,7 @@ package feathers.controls
 				newWidth += this._paddingLeft + this._paddingRight;
 			}
 
-			var newHeight:Number = this.explicitHeight;
+			var newHeight:Number = this._explicitHeight;
 			if(needsHeight)
 			{
 				if(this._text)

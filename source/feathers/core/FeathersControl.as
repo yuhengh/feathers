@@ -505,7 +505,7 @@ package feathers.core
 		 * The width value explicitly set by calling the width setter or
 		 * setSize().
 		 */
-		protected var explicitWidth:Number = NaN;
+		protected var _explicitWidth:Number = NaN;
 
 		/**
 		 * The final width value that should be used for layout. If the width
@@ -565,16 +565,16 @@ package feathers.core
 		 */
 		override public function set width(value:Number):void
 		{
-			if(this.explicitWidth == value)
+			if(this._explicitWidth == value)
 			{
 				return;
 			}
 			var valueIsNaN:Boolean = value !== value; //isNaN
-			if(valueIsNaN && this.explicitWidth !== this.explicitWidth)
+			if(valueIsNaN && this._explicitWidth !== this._explicitWidth)
 			{
 				return;
 			}
-			this.explicitWidth = value;
+			this._explicitWidth = value;
 			if(valueIsNaN)
 			{
 				this.actualWidth = this.scaledActualWidth = 0;
@@ -590,7 +590,7 @@ package feathers.core
 		 * The height value explicitly set by calling the height setter or
 		 * setSize().
 		 */
-		protected var explicitHeight:Number = NaN;
+		protected var _explicitHeight:Number = NaN;
 
 		/**
 		 * The final height value that should be used for layout. If the height
@@ -650,16 +650,16 @@ package feathers.core
 		 */
 		override public function set height(value:Number):void
 		{
-			if(this.explicitHeight == value)
+			if(this._explicitHeight == value)
 			{
 				return;
 			}
 			var valueIsNaN:Boolean = value !== value; //isNaN
-			if(valueIsNaN && this.explicitHeight !== this.explicitHeight)
+			if(valueIsNaN && this._explicitHeight !== this._explicitHeight)
 			{
 				return;
 			}
-			this.explicitHeight = value;
+			this._explicitHeight = value;
 			if(valueIsNaN)
 			{
 				this.actualHeight = this.scaledActualHeight = 0;
@@ -1758,13 +1758,13 @@ package feathers.core
 		 */
 		public function setSize(width:Number, height:Number):void
 		{
-			this.explicitWidth = width;
+			this._explicitWidth = width;
 			var widthIsNaN:Boolean = width != width;
 			if(widthIsNaN)
 			{
 				this.actualWidth = this.scaledActualWidth = 0;
 			}
-			this.explicitHeight = height;
+			this._explicitHeight = height;
 			var heightIsNaN:Boolean = height != height;
 			if(heightIsNaN)
 			{
@@ -1842,9 +1842,9 @@ package feathers.core
 		 */
 		protected function setSizeInternal(width:Number, height:Number, canInvalidate:Boolean):Boolean
 		{
-			if(this.explicitWidth === this.explicitWidth) //!isNaN
+			if(this._explicitWidth === this._explicitWidth) //!isNaN
 			{
-				width = this.explicitWidth;
+				width = this._explicitWidth;
 			}
 			else
 			{
@@ -1857,9 +1857,9 @@ package feathers.core
 					width = this._maxWidth;
 				}
 			}
-			if(this.explicitHeight === this.explicitHeight) //!isNaN
+			if(this._explicitHeight === this._explicitHeight) //!isNaN
 			{
-				height = this.explicitHeight;
+				height = this._explicitHeight;
 			}
 			else
 			{
@@ -2148,5 +2148,15 @@ package feathers.core
 			}
 			this._styleProvider.applyStyles(this);
 		}
+
+        public function get explicitWidth():Number
+        {
+            return _explicitWidth;
+        }
+
+        public function get explicitHeight():Number
+        {
+            return _explicitHeight;
+        }
 	}
 }

@@ -649,14 +649,14 @@ package feathers.controls
 		 */
 		protected function autoSizeIfNeeded():Boolean
 		{
-			var needsWidth:Boolean = this.explicitWidth !== this.explicitWidth; //isNaN
-			var needsHeight:Boolean = this.explicitHeight !== this.explicitHeight; //isNaN
+			var needsWidth:Boolean = this._explicitWidth !== this._explicitWidth; //isNaN
+			var needsHeight:Boolean = this._explicitHeight !== this._explicitHeight; //isNaN
 			if(!needsWidth && !needsHeight)
 			{
 				return false;
 			}
-			var newWidth:Number = needsWidth ? this._originalBackgroundWidth : this.explicitWidth;
-			var newHeight:Number = needsHeight ? this._originalBackgroundHeight  : this.explicitHeight;
+			var newWidth:Number = needsWidth ? this._originalBackgroundWidth : this._explicitWidth;
+			var newHeight:Number = needsHeight ? this._originalBackgroundHeight  : this._explicitHeight;
 			return this.setSizeInternal(newWidth, newHeight, false);
 		}
 

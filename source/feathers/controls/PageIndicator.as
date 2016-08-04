@@ -861,8 +861,8 @@ package feathers.controls
 			}
 			SUGGESTED_BOUNDS.x = SUGGESTED_BOUNDS.y = 0;
 			SUGGESTED_BOUNDS.scrollX = SUGGESTED_BOUNDS.scrollY = 0;
-			SUGGESTED_BOUNDS.explicitWidth = this.explicitWidth;
-			SUGGESTED_BOUNDS.explicitHeight = this.explicitHeight;
+			SUGGESTED_BOUNDS.explicitWidth = this._explicitWidth;
+			SUGGESTED_BOUNDS.explicitHeight = this._explicitHeight;
 			SUGGESTED_BOUNDS.maxWidth = this._maxWidth;
 			SUGGESTED_BOUNDS.maxHeight = this._maxHeight;
 			SUGGESTED_BOUNDS.minWidth = this._minWidth;

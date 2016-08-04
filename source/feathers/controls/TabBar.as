@@ -1774,8 +1774,8 @@ package feathers.controls
 			this._viewPortBounds.y = 0;
 			this._viewPortBounds.scrollX = 0;
 			this._viewPortBounds.scrollY = 0;
-			this._viewPortBounds.explicitWidth = this.explicitWidth;
-			this._viewPortBounds.explicitHeight = this.explicitHeight;
+			this._viewPortBounds.explicitWidth = this._explicitWidth;
+			this._viewPortBounds.explicitHeight = this._explicitHeight;
 			this._viewPortBounds.minWidth = this._minWidth;
 			this._viewPortBounds.minHeight = this._minHeight;
 			this._viewPortBounds.maxWidth = this._maxWidth;
